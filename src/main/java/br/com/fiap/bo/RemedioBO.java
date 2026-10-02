@@ -3,19 +3,23 @@ package br.com.fiap.bo;
 import br.com.fiap.dao.RemedioDAO;
 import br.com.fiap.to.RemedioTO;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-
-//Pacote de regra de negócios, Business Object.
-//Validações
 
 public class RemedioBO {
     private RemedioDAO remedioDAO;
-
-    public ArrayList<RemedioTO> findAll() {
+    public ArrayList <RemedioTO> findAll(){
         remedioDAO = new RemedioDAO();
-        // aqui se implementa as regras de negócios
+        // aqui se implementa as regras de negocios
         return remedioDAO.findAll();
     }
-
+    public RemedioTO save(RemedioTO remedio){
+        remedioDAO = new RemedioDAO();
+        //aqui se implementa a regra de negocios
+        // verificando se o remedio esta vencido
+        if(remedio.getDataDeValidade().isBefore(LocalDate.now())){
+            return null;
+        }
+        return remedioDAO.save(remedio);
+    }
 }
-
