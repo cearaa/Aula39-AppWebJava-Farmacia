@@ -13,13 +13,16 @@ public class RemedioBO {
         // aqui se implementa as regras de negocios
         return remedioDAO.findAll();
     }
+
+    public RemedioTO findByCodigo(Long codigo){
+        remedioDAO = new RemedioDAO();
+        // aqui se implementa as regras de negocios
+        return remedioDAO.findByCodigo(codigo);
+    }
+
     public RemedioTO save(RemedioTO remedio){
         remedioDAO = new RemedioDAO();
         //aqui se implementa a regra de negocios
-        // verificando se o remedio esta vencido
-        if(remedio.getDataDeValidade().isBefore(LocalDate.now())){
-            return null;
-        }
         return remedioDAO.save(remedio);
     }
 }
