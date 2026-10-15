@@ -12,6 +12,7 @@ public class RemedioTO {
     @NotNull @PastOrPresent private LocalDate dataDeFabricacao;
     @NotNull @FutureOrPresent private LocalDate dataDeValidade;
     // construtores
+    //sssss
     public RemedioTO() {
     }
     public RemedioTO(Long codigo, String nome, Double preco, LocalDate dataDeFabricacao, LocalDate dataDeValidade) {
